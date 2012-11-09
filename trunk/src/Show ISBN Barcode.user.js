@@ -4,7 +4,7 @@
 // @description    Displaying the Barcode Image for the ISBN for a Book website.
 // @include        http://www.flipkart.com/*
 // @include        http://flipkart.com/*
-// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
+// @require        https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
 // @grant GM_xmlhttpRequest
 // @grant GM_log
 // ==/UserScript==
