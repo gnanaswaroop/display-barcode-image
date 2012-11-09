@@ -12,6 +12,12 @@
 function fetchHTML() {
 	// TODO Replace
 	var isbn = extractISBNFromPage();
+	
+	if(isbn == undefined || isbn == null || isbn == "") {
+		GM_log('ISBN not found on the page. Logic skipped ');
+		return;
+	}
+	
 	GM_log('ISBN found on the page ' + isbn);
 	GM_xmlhttpRequest ( {
 		method: 'GET',
@@ -28,7 +34,7 @@ function fetchHTML() {
 			
 			if(divParent != undefined) {
 				divParent.append("<div id='isbn_barcode'><img id='isbn_barcode_img' src='" + imageSRC + "'/></div>");
-				GM_log('ISBN Image injected after book summary ' + divParent.html());
+				GM_log('ISBN Image injected after book summary');
 			}			
 		}
 	} );
@@ -40,9 +46,12 @@ function extractISBNFromPage() {
 	var isbn = $("img#visible-image-small").attr("data-pid");
 	if(isbn != undefined) {
 		GM_log('ISBN Found from Flipkart ' + isbn);
+		return isbn;		
 	}
 	
-	return isbn;
+	GM_log('ISBN Not Found from Flipkart');
+	
+	return null;
 }
 
 // Wait till the page has loaded
